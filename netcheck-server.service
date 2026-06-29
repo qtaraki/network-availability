@@ -1,0 +1,22 @@
+[Unit]
+Description=Network health check host server (Flask + SQLite)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/netcheck
+# --- edit these ---
+Environment=NETCHECK_PORT=8080
+Environment=NETCHECK_INTERVAL=5
+Environment=NETCHECK_OUTAGE_AFTER=10
+Environment=NETCHECK_DB=/opt/netcheck/heartbeats.db
+# Environment=NETCHECK_TOKEN=changeme-shared-secret
+# ------------------
+# For production, run under gunicorn instead of Flask's dev server (see README).
+ExecStart=/usr/bin/python3 /opt/netcheck/server.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

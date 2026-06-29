@@ -1,0 +1,19 @@
+[Unit]
+Description=Network health check client (heartbeat sender)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# --- edit these ---
+Environment=NETCHECK_HOST=http://YOUR_HOST_IP:8080
+Environment=NETCHECK_CLIENT_ID=%H
+Environment=NETCHECK_INTERVAL=5
+# Environment=NETCHECK_TOKEN=changeme-shared-secret
+# ------------------
+ExecStart=/usr/bin/python3 /opt/netcheck/client.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

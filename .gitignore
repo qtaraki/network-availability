@@ -1,0 +1,10 @@
+# Runtime data
+heartbeats.db
+*.db
+*.db-journal
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
