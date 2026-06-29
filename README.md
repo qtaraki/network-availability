@@ -129,3 +129,7 @@ the dropdown.
   (e.g. 15s interval / 30s threshold) for fewer rows and coarser resolution.
 - **Clock.** Outage math uses the host's receive time, so the client's clock does
   not need to be accurate.
+
+## Acknowledgments
+
+Built by Quais Taraki with Claude (Anthropic) as a coding collaborator.
